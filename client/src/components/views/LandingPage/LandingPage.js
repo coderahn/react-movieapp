@@ -18,7 +18,6 @@ function LandingPage() {
         fetch(endpoint)
         .then(response => response.json())
         .then(response => {
-            console.log(response);
             setMovies([...Movies,...response.results])  //setMovies([a,b]) : ..a를 넣어주면, 그 밑에 결과를 붙임
             setMainMovieImage(response.results[0])
             setCurrentPage(response.page)
@@ -48,6 +47,7 @@ function LandingPage() {
                 {Movies && Movies.map((movie,index) =>(
                     <React.Fragment key={index}>
                         <GridCards
+                            landingPage
                             image={movie.poster_path ? 
                                 `${IMAGE_BASE_URL}w500${movie.poster_path}` : null}
                             movieId={movie.id}
